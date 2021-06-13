@@ -16,10 +16,59 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans text-gray-900 text-sm">
+    <body class="font-sans text-gray-900 text-sm bg-gray-background">
         <header class="flex items-center justify-between px-8 py-4">
-            <a href="#">Laracasts logo</a>
-            
+            <a href="#">
+                <img src="{{ asset('img/logo.svg') }}" alt="logo">
+            </a>
+            <div class="flex items-center">
+                @if (Route::has('login'))
+                    <div class="px-6 py-4">
+                        @auth
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                                {{ __('Log out') }}
+                            </a>
+                        </form>
+                        @else
+                            <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
+                <a href="#">
+                    <img src="https://www.gravatar.com/avatar/000000000000000000000000000000000?d=mp" alt="avatar" class="w-10 h-10 rounded-full">
+                </a>
+            </div>
         </header>
+
+        <main class="container mx-auto flex" style="max-width: 1000px">
+            <div class="w-70 mr-5">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione dolore, hic alias totam inventore rerum labore eaque numquam dignissimos! Recusandae non qui repudiandae eligendi soluta vel facere, omnis voluptatem dolore.
+            </div>
+            <div class="w-175">
+                <nav class="flex items-center justify-between text-xs">
+                    <ul class="flex uppercase font-semibold space-x-10 border-b-4 pb-3">
+                        <li><a href="#" class="border-b-4 pb-3 border-blue">All Idias (87)</a></li>
+                        <li><a href="#" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">Considering (6)</a></li>
+                        <li><a href="#" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">In Progress (1)</a></li>
+                    </ul>
+
+                    <ul class="flex uppercase font-semibold space-x-10 border-b-4 pb-3">
+                        <li><a href="#" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">Implemented (10)</a></li>
+                        <li><a href="#" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">Closed (55)</a></li>
+                    </ul>
+                </nav>
+
+                <div class="mt-8">
+                    {{ $slot }}
+                </div>
+            </div>
+        </main>
     </body>
 </html>
