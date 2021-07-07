@@ -17,11 +17,11 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans text-gray-900 text-sm bg-gray-background">
-        <header class="flex items-center justify-between px-8 py-4">
+        <header class="flex flex-col md:flex-row items-center justify-between px-8 py-4">
             <a href="#">
                 <img src="{{ asset('img/logo.svg') }}" alt="logo">
             </a>
-            <div class="flex items-center">
+            <div class="flex items-center mt-2 md:mt-0">
                 @if (Route::has('login'))
                     <div class="px-6 py-4">
                         @auth
@@ -47,10 +47,10 @@
             </div>
         </header>
 
-        <main class="container mx-auto flex" style="max-width: 1000px">
-            <div class="w-70 mr-5">
+        <main class="container mx-auto flex flex-col md:flex-row" style="max-width: 1000px">
+            <div class="w-70 md:mr-5 md:mx-0 mx-auto">
                 <div 
-                    class="border-2 border-blue rounded-xl mt-16 bg-white"
+                    class="border-2 border-blue rounded-xl mt-16 bg-white md:sticky top-8"
                     style="
                         border-image-source: linear-gradient(to bottom, rgba(50, 138, 241, 0.22), rgba(99, 123, 255, 0));
                         border-image-slice: 1;
@@ -99,8 +99,8 @@
                     </form>
                 </div>
             </div>
-            <div class="w-175">
-                <nav class="flex items-center justify-between text-xs">
+            <div class="md:w-175 w-full px-2 md:px-0">
+                <nav class="md:flex items-center justify-between text-xs hidden">
                     <ul class="flex uppercase font-semibold space-x-10 border-b-4 pb-3">
                         <li><a href="#" class="border-b-4 pb-3 border-blue">All Idias (87)</a></li>
                         <li><a href="#" class="text-gray-400 transition duration-150 ease-in border-b-4 pb-3 hover:border-blue">Considering (6)</a></li>
