@@ -50,7 +50,7 @@ class User extends Authenticatable
     {
         return "https://www.gravatar.com/avatar/"
                 .md5($this->email)
-                ."?s=200"
+                ."?s=200"  
                 ."&d=mp";
     }
 }
