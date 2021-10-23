@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Exceptions\DuplicateVoteException;
+use App\Exceptions\VoteNotFoundException;
 use App\Models\Status;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
@@ -63,6 +65,9 @@ class Idea extends Model
 
     public function vote(User $user)
     {
+        if($this->isVotedByUser($user)) {
+            throw new DuplicateVoteException;
+        }
         Vote::create([
             'idea_id' => $this->id,
             'user_id' => $user->id,
@@ -71,10 +76,15 @@ class Idea extends Model
 
     public function removeVote(User $user)
     {
-        Vote::where('idea_id', $this->id)
+        $voteToDelete = Vote::where('idea_id', $this->id)
             ->where('user_id', $user->id)
-            ->first()
-            ->delete();
+            ->first();
+        
+        if ($voteToDelete) {
+            $voteToDelete->delete();
+        } else {
+            throw new VoteNotFoundException;
+        }
     }
 
 }
