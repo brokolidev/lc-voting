@@ -75,7 +75,9 @@
 
             <div>
                 <label class="inline-flex items-center font-normal">
-                    <input type="checkbox" checked="" name="notify_voters" class="rounded bg-gray-200">
+                    <input 
+                        wire:model="notifyAllVoters"
+                        type="checkbox" checked="" name="notify_voters" class="rounded bg-gray-200">
                     <span class="ml-2">Notify all voters</span>
                 </label>
             </div>
