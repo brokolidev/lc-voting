@@ -1,10 +1,14 @@
 @component('mail::message')
 # Idea Status Updated
 
-The body of your message.
+The idea : {{ $idea->title }}
 
-@component('mail::button', ['url' => ''])
-Button Text
+has been updated to a status of:
+
+{{ $idea->status->name }}
+
+@component('mail::button', ['url' => route('idea.show', $idea)])
+View Idea
 @endcomponent
 
 Thanks,<br>

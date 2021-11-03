@@ -12,7 +12,7 @@ class IdeaStatusUpdatedMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $idea;
+    public $idea;
 
     /**
      * Create a new message instance.
