@@ -10,7 +10,9 @@
 
     <livewire:idea-show :idea="$idea" :votesCount="$votesCount" />
 
-    <livewire:edit-idea />
+    @can('update', $idea)
+        <livewire:edit-idea :idea="$idea" />
+    @endcan
 
     <div class="comments-container relative space-y-6 md:ml-22 mt-1 pt-4 my-8">
         <div class="comment-container relative bg-white rounded-xl flex">
