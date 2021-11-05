@@ -1,8 +1,11 @@
 <div x-init="window.livewire.on('ideaWasUpdated', () =>{
         isOpen = false
-    })" @custom-show-edit-modal.window="isOpen = true" @keydown.escape.window="isOpen = false"
-    x-data="{ isOpen: false }" x-cloak class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title"
-    role="dialog" x-show="isOpen" aria-modal="true">
+    })" @custom-show-edit-modal.window="
+        isOpen = true
+        $nextTick(() => $refs.title.focus())
+        " @keydown.escape.window="isOpen = false" x-data="{ isOpen: false }" x-cloak
+    class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" x-show="isOpen"
+    aria-modal="true">
     <div class="flex items-end justify-center min-h-screen">
         <div x-show.transition.opacity="isOpen" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
             aria-hidden="true"></div>
@@ -24,7 +27,7 @@
                     you created it.</p>
                 <form wire:submit.prevent="updateIdea" action="#" method="POST" class="space-y-4 px-4 py-6">
                     <div>
-                        <input wire:model.defer="title" type="text"
+                        <input x-ref="title" wire:model.defer="title" type="text"
                             class="border-none text-sm w-full bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2"
                             placeholder="Your Idea" required>
                         @error('title')

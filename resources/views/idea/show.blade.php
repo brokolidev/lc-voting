@@ -14,6 +14,8 @@
         <livewire:edit-idea :idea="$idea" />
     @endcan
 
+    <livewire:delete-idea :idea="$idea" />
+
     <div class="comments-container relative space-y-6 md:ml-22 mt-1 pt-4 my-8">
         <div class="comment-container relative bg-white rounded-xl flex">
             <div class="flex flex-col md:flex-row px-4 py-6 flex-1">
