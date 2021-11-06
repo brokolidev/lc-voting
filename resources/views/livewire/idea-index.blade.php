@@ -34,6 +34,11 @@
                 <a href="{{ route('idea.show', $idea) }}" class="idea-link hover:underline">{{ $idea->title }}</a>
             </h4>
             <div class="text-gray-600 xt-3 line-clamp-3">
+                @admin
+                @if ($idea->spam_reports > 0)
+                    <div class="text-red mb-2">Spam Reports: {{ $idea->spam_reports }}</div>
+                @endif
+                @endadmin
                 {{ $idea->description }}
             </div>
 
@@ -56,7 +61,7 @@
             <div class="mt-4 md:mt-0 md:hidden flex items-center">
                 <div class="bg-gray-100 text-center rounded-xl h-10 px-4 py-2 pr-8">
                     <div class="text-sm font-bold reading-none @if ($hasVoted) text-blue @endif"">{{ $votesCount }}</div>
-                    <div class="  text-xxs font-semibold leading-none text-gray-400">Votes</div>
+                    <div class="     text-xxs font-semibold leading-none text-gray-400">Votes</div>
                 </div>
                 @if ($hasVoted)
                     <button wire:click.prevent="vote"
