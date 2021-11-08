@@ -1,6 +1,6 @@
 @props(['eventToOpenModal', 'eventToCloseModal', 'modalTitle', 'modalDescription', 'modalConfirmButtonText', 'wireClick'])
 
-<div x-init="window.livewire.on('{{ $eventToCloseModal }}', () =>{
+<div x-init="Livewire.on('{{ $eventToCloseModal }}', () =>{
     isOpen = false
 })" {{ '@' . $eventToOpenModal }}.window="
     isOpen = true
