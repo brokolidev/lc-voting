@@ -9,29 +9,40 @@
         $nextTick(() => showNotification(messageToDisplay))
     @else
         Livewire.on('ideaWasUpdated', message =>{
-        showNotification(message)
+            showNotification(message)
         })
 
         Livewire.on('ideaWasMarkedAsSpam', message =>{
-        showNotification(message)
+            showNotification(message)
         })
 
         Livewire.on('ideaWasMarkedAsNotSpam', message =>{
-        showNotification(message)
+            showNotification(message)
+        })
+
+        Livewire.on('statusWasUpdated', message =>{
+            showNotification(message)
+        })
+
+        Livewire.on('commentWasAdded', message =>{
+            showNotification(message)
         })
     @endif
     " 
-    x-data="{
-    isOpen: false,
-    messageToDisplay: '{{ $messageToDisplay }}',
-    showNotification(message) {
-        this.messageToDisplay = message
-        this.isOpen = true
-        setTimeout(() => {
-            this.isOpen = false
-            }, 5000)
+    x-data="
+    {
+        isOpen: false,
+        messageToDisplay: '{{ $messageToDisplay }}',
+        showNotification(message) {
+            this.messageToDisplay = message
+            this.isOpen = true
+            setTimeout(() => {
+                this.isOpen = false
+                }, 5000)
         }
-    }"  x-show="isOpen" x-transition:enter="transition ease-out duration-150"
+    }
+    "  
+    x-show="isOpen" x-transition:enter="transition ease-out duration-150"
     x-transition:enter-start="opacity-0 transform translate-x-8"
     x-transition:enter-end="opacity-100 transform translatex-0" x-transition:leave="transition ease-in duration-150"
     x-transition:leave-start="opacity-100 transform translate-x-0"

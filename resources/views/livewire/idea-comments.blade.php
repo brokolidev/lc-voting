@@ -4,7 +4,7 @@
         <div class="comments-container relative space-y-6 md:ml-22 mt-1 pt-4 my-8">
 
             @foreach ($comments as $comment)
-                <livewire:idea-comment :key="$comment->id" :comment="$comment" /> 
+                <livewire:idea-comment :key="$comment->id" :comment="$comment" :ideaUserId="$idea->user->id" /> 
             @endforeach
         
             {{-- for admin <div class="comment-container is-admin relative bg-white rounded-xl flex">

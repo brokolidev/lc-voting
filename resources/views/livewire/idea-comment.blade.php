@@ -10,13 +10,16 @@
             {{-- <h4 class="text-xl font-semibold">
                 <a href="#" class="hover:underline">A random title can go here</a>
             </h4> --}}
-            <div class="text-gray-600 line-clamp-3">
+            <div class="text-gray-600">
                 {{ $comment->body }}
             </div>
 
             <div class="flex items-center justify-between mt-6">
                 <div class="flex items-center text-xs font-semibold space-x-2 text-gray-400">
                     <div class="font-bold text-gray-900">{{ $comment->user->name }}</div>
+                    @if ($comment->user->id === $ideaUserId)
+                        <div class="rounded-full border bg-gray-100 px-3 py-1">OP</div>
+                    @endif
                     <div>&bull;</div>
                     <div>{{ $comment->created_at->diffForHumans() }}</div>
                 </div>
