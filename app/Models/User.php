@@ -51,13 +51,21 @@ class User extends Authenticatable
     {
         return $this->hasMany(Idea::class);
     }
+    
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 
     public function getAvatar()
     {
+        $avatarDefaults = ['identicon', 'monsterid', 'retro', 'robohash'];
+        $randomInteger = rand(0, count($avatarDefaults) - 1);
+
         return "https://www.gravatar.com/avatar/"
-                .md5($this->email)
-                ."?s=200"  
-                ."&d=mp";
+                .md5( strtolower( trim( $this->email ) ) )
+                ."?d={$avatarDefaults[$randomInteger]}"  
+                ."&s=200";
     }
 
     public function isAdmin()
