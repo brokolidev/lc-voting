@@ -21,3 +21,9 @@
     <livewire:mark-idea-as-not-spam :idea="$idea" />
 @endpush
 @endadmin
+
+@auth
+    @push('modals')
+        <livewire:edit-comment />
+    @endpush
+@endauth

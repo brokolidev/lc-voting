@@ -14,6 +14,7 @@
                 {{ $comment->body }}
             </div>
 
+            @auth
             <div class="flex items-center justify-between mt-6">
                 <div class="flex items-center text-xs font-semibold space-x-2 text-gray-400">
                     <div class="font-bold text-gray-900">{{ $comment->user->name }}</div>
@@ -36,6 +37,14 @@
                         <ul x-cloak x-show.transition.origin.top.left="isOpen" @click.away="isOpen = false"
                             @keydown.escape.window="isOpen = false"
                             class="absolute w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 text-left z-10 md:ml-8 top-8 md:top-6 right-0 md:left-0">
+                            @can('update', $comment)
+                            <li><a href="#" @click.prevent="
+                                    isOpen = false
+                                    Livewire.emit('setEditComment', {{ $comment->id }})
+                                        {{-- $dispatch('custom-show-edit-modal')  --}}
+                                    "
+                                class="hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in block">Edit Comment</a></li>
+                            @endcan
                             <li><a href="#"
                                     class="hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in block">Mark
                                     as Spam</a></li>
@@ -47,6 +56,8 @@
 
                 </div>
             </div>
+            @endauth
+
         </div>
     </div>
 </div> <!-- end comment container -->

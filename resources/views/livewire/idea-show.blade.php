@@ -48,12 +48,13 @@
                                     @keydown.escape.window="isOpen = false"
                                     class="absolute w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 text-left ml-8 z-10 md:ml-8 top-8 md:top-6 right-0 md:left-0">
                                     @can('update', $idea)
-                                        <li><a href="#" @click.prevent="
-                                                                isOpen = false
-                                                                    $dispatch('custom-show-edit-modal') 
-                                                                "
-                                                class="hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in block">Edit
-                                                Idea</a></li>
+                                    <li><a href="#" @click.prevent="
+                                                    isOpen = false
+                                                        $dispatch('custom-show-edit-modal') 
+                                                    "
+                                        class="hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in block">Edit
+                                        Idea</a>
+                                    </li>
                                     @endcan
                                     @can('delete', $idea)
                                         <li><a href="#" @click.prevent="
