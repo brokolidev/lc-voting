@@ -41,16 +41,19 @@
                             <li><a href="#" @click.prevent="
                                     isOpen = false
                                     Livewire.emit('setEditComment', {{ $comment->id }})
-                                        {{-- $dispatch('custom-show-edit-modal')  --}}
                                     "
                                 class="hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in block">Edit Comment</a></li>
+                            @endcan
+                            @can('delete', $comment)
+                            <li><a href="#" @click.prevent="
+                                    isOpen = false
+                                    Livewire.emit('setDeleteComment', {{ $comment->id }})
+                                    "
+                                class="hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in block">Delete Comment</a></li>
                             @endcan
                             <li><a href="#"
                                     class="hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in block">Mark
                                     as Spam</a></li>
-                            <li><a href="#"
-                                    class="hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in block">Delete
-                                    Post</a></li>
                         </ul>
                     </div>
 
