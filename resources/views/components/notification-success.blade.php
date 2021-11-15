@@ -35,6 +35,10 @@
         Livewire.on('commentWasDeleted', message =>{
             showNotification(message)
         })
+
+        Livewire.on('commentWasMarkedAsSpam', message =>{
+            showNotification(message)
+        })
     @endif
     " 
     x-data="

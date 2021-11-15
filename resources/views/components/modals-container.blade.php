@@ -33,3 +33,9 @@
         <livewire:delete-comment />
     @endpush
 @endauth
+
+@auth
+    @push('modals')
+        <livewire:mark-comment-as-spam />
+    @endpush
+@endauth

@@ -11,6 +11,11 @@
                 <a href="#" class="hover:underline">A random title can go here</a>
             </h4> --}}
             <div class="text-gray-600">
+                @admin
+                    @if ($comment->spam_reports > 0)
+                        <div class="text-red mb-2">Spam Reports: {{ $comment->spam_reports }}</div>
+                    @endif
+                @endadmin
                 {{ $comment->body }}
             </div>
 
@@ -37,6 +42,7 @@
                         <ul x-cloak x-show.transition.origin.top.left="isOpen" @click.away="isOpen = false"
                             @keydown.escape.window="isOpen = false"
                             class="absolute w-44 font-semibold bg-white shadow-dialog rounded-xl py-3 text-left z-10 md:ml-8 top-8 md:top-6 right-0 md:left-0">
+
                             @can('update', $comment)
                             <li><a href="#" @click.prevent="
                                     isOpen = false
@@ -44,6 +50,7 @@
                                     "
                                 class="hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in block">Edit Comment</a></li>
                             @endcan
+
                             @can('delete', $comment)
                             <li><a href="#" @click.prevent="
                                     isOpen = false
@@ -51,9 +58,15 @@
                                     "
                                 class="hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in block">Delete Comment</a></li>
                             @endcan
-                            <li><a href="#"
-                                    class="hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in block">Mark
-                                    as Spam</a></li>
+
+                            {{-- @can('delete', $comment) --}}
+                            <li><a href="#" @click.prevent="
+                                    isOpen = false
+                                    Livewire.emit('setMarkAsSpamComment', {{ $comment->id }})
+                                    "
+                                class="hover:bg-gray-100 px-5 py-3 transition duration-150 ease-in block">Mark as Spam</a></li>
+                            {{-- @endcan --}}
+                            
                         </ul>
                     </div>
 

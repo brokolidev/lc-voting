@@ -35,7 +35,7 @@ aria-modal="true">
                 <div>
                     <textarea x-ref="editComment" wire:model.defer="body" name="idea" id="idea" cols="30" rows="4"
                         class="w-full bg-gray-100 rounded-xl placeholder-gray-900 text-sm px-4 py-2 border-none"
-                        placeholder="Describe your comment" required></textarea>
+                        placeholder="Type your comment" required></textarea>
                     @error('body')
                         <p class="text-red text-xs mt-1">{{ $message }}</p>
                     @enderror
