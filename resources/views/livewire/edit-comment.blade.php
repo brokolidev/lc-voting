@@ -33,7 +33,7 @@ aria-modal="true">
             <form wire:submit.prevent="updateComment" action="#" method="POST" class="space-y-4 px-4 py-6">
                 
                 <div>
-                    <textarea x-ref="editComment" wire:model.defer="body" name="idea" id="idea" cols="30" rows="4"
+                    <textarea x-ref="editComment" wire:model.defer="body" name="idea" cols="30" rows="4"
                         class="w-full bg-gray-100 rounded-xl placeholder-gray-900 text-sm px-4 py-2 border-none"
                         placeholder="Type your comment" required></textarea>
                     @error('body')

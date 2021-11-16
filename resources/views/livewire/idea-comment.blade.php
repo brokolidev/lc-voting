@@ -39,7 +39,7 @@
                     <div>&bull;</div>
                     <div>{{ $comment->created_at->diffForHumans() }}</div>
                 </div>
-                <div x-data="{ isOpen: false }" class="flex items-center space-x-2">
+                <div x-data="{ isOpen: false }" class="text-gray-900 flex items-center space-x-2">
                     <div class="relative">
                         <button @click="isOpen = !isOpen"
                             class="relative bg-gray-100 hover:bg-gray-200 rounded-full h-7 transition duration-150 ease-in text-gray-400 px-3 border">
