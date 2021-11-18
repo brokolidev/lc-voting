@@ -23,7 +23,7 @@ class CommentNotifications extends Component
     public function render()
     {
         return view('livewire.comment-notifications', [
-            'notifications' => auth()->user()->unreadNotifications,
+            'notifications' => $this->notifications,
         ]);
     }
 }
