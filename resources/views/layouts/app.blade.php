@@ -106,7 +106,22 @@
     </main>
 
     @if (session('success_message'))
-        <x-notification-success :redirect="true" messageToDisplay="{{ session('success_message') }}" />
+        <x-notification-success 
+            :redirect="true" 
+            messageToDisplay="{{ session('success_message') }}" />
+    @endif
+
+    @if (session('error_message'))
+        <x-notification-success 
+            type="error"
+            :redirect="true" 
+            messageToDisplay="{{ session('error_message') }}" />
+    @endif
+
+    @if (session('scrollToComment'))
+        <div class="text-center">
+            {{ session('scrollToComment') }}
+        </div>
     @endif
 
     @stack('modals')

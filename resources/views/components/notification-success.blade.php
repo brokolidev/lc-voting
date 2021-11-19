@@ -1,4 +1,5 @@
 @props([
+    'type' => 'success',
     'redirect' => false,
     'messageToDisplay' => '',
 ])
@@ -61,10 +62,18 @@
     x-transition:leave-end="opacity-0 transform translate-x-8"
     class="flex justify-between fixed bottom-0 right-0 bg-white rounded-xl shadow-lg border px-4 py-5 sm:mx-6 mx-2 my-8 sm:max-w-sm w-full z-20 max-w-xs">
     <div class="flex items-center">
-        <svg class="h-6 w-6 text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
+        @if ($type === 'success')
+            <svg class="h-6 w-6 text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        @endif
+
+        @if ($type === 'error')
+            <svg class="h-6 w-6 text-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        @endif
         <div class="ml-2 font-semibold text-gray-500 sm:text-base text-sm" x-text="messageToDisplay"></div>
     </div>
     <button class="text-gray-400 hover:text-gray-500" @click="isOpen = false">
