@@ -1,4 +1,5 @@
-<div x-cloak x-data="{ isOpen: false }" class="relative">
+<div wire:poll="getNofificationCount"
+    x-cloak x-data="{ isOpen: false }" class="relative">
     <button @click="
         isOpen = !isOpen
         if(isOpen) {
