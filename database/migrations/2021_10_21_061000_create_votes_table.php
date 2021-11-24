@@ -18,7 +18,7 @@ class CreateVotesTable extends Migration
             $table->unique([
                 'idea_id', 'user_id',
             ]);
-            $table->foreignId('idea_id')->constrained();
+            $table->foreignId('idea_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
